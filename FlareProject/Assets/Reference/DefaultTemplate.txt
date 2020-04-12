@@ -1,0 +1,17 @@
+using UnityEngine;
+
+//çÏê¨é“ÅF
+//ì‡óeÅF
+
+public class #SCRIPTNAME# : MonoBehaviour
+{
+
+    void Start()
+    {
+
+    }
+    void Update()
+    {
+
+    }
+}
