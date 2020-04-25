@@ -1,17 +1,39 @@
 ﻿using UnityEngine;
 
-//作成者：
-//内容：
+//作成者：佐伯
+//内容：MonoBehaviourを継承したクラス、基本的にhierarchy上に配置する場合はこのクラスを継承する
 
 public class MonoUtil : MonoBehaviour
 {
+	protected GameObject selfObj = null;
+	protected Transform selfTrans = null;
 
-	void Start ()
+	private void Awake ()
 	{
-
+		selfObj = this.gameObject;
+		selfTrans = this.transform;
 	}
-	void Update ()
+
+	//検証用
+#if false
+	private void Update ()
 	{
-
+		if (Input.GetKeyDown (KeyCode.A))
+		{
+			for (int i = 0; i < 60000; ++i)
+			{
+				bool a = this.gameObject;
+				bool b = this.transform;
+			}
+		}
+		if (Input.GetKeyDown (KeyCode.B))
+		{
+			for (int i = 0; i < 60000; ++i)
+			{
+				bool a = selfObj;
+				bool b = selfTrans;
+			}
+		}
 	}
+#endif
 }
