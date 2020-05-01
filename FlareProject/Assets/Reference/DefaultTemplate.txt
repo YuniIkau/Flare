@@ -3,15 +3,15 @@ using UnityEngine;
 //çÏê¨é“ÅF
 //ì‡óeÅF
 
-public class #SCRIPTNAME# : MonoBehaviour
+public class #SCRIPTNAME# : MonoUtil
 {
 
-    void Start()
-    {
+	void Start()
+	{
 
-    }
-    void Update()
-    {
+	}
+	void Update()
+	{
 
-    }
+	}
 }

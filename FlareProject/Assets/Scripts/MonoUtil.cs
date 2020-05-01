@@ -13,6 +13,14 @@ public class MonoUtil : MonoBehaviour
 		selfObj = this.gameObject;
 		selfTrans = this.transform;
 	}
+	public GameObject GetGameObject()
+	{
+		return selfObj;
+	}
+	public Transform GetTransform()
+	{
+		return selfTrans;
+	}
 
 	//検証用
 #if false
