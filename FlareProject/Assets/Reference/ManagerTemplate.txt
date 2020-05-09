@@ -1,0 +1,15 @@
+using UnityEngine;
+
+//ì¬ÒF
+//“à—eF
+
+namespace Manager
+{
+	public class #SCRIPTNAME# : ManagerBase<#SCRIPTNAME#>
+	{
+		private void Awake ()
+		{
+			instance = this;
+		}
+	}
+}
