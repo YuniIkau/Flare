@@ -22,11 +22,11 @@ namespace Manager
 		}
 		//UnityEditor側で設定されている想定（後々変えるかも）
 		[SerializeField]
-		private Audio[] m_AudioSourcea = null;
+		private Audio[] m_AudioSource = null;
 
-		private List<Audio> m_CacheAudio = new List<Audio> ();
+		private List<AudioClip> m_CacheAudio = new List<AudioClip> ();
 
-		public enum AudioIndex:byte
+		public enum AudioIndex : byte
 		{
 			NONE = 99,
 			SE_1 = 0,
@@ -36,7 +36,7 @@ namespace Manager
 		}
 		private void Awake ()
 		{
-			instance = this;
+			instance = this; selfObj = null;
 		}
 		private void Start ()
 		{
@@ -54,70 +54,79 @@ namespace Manager
 		/// <param name="index">再生するプレイヤーの選択</param>
 		public void PlaySE (AudioIndex audioIndex = 0)
 		{
-			if (m_AudioSourcea[(int)audioIndex].isLoadEnd == true)
+			if (m_AudioSource[(int)audioIndex].isLoadEnd == false)
 			{
-				m_AudioSourcea[(int)audioIndex].audioSource.Play ();
+				Debug.LogError ("ロード完了していません");
+				return;
 			}
+			if (m_AudioSource[(int)audioIndex].audioSource == null)
+			{
+				Debug.LogError ("オーディオクリップのセットがされていません");
+				return;
+			}
+			m_AudioSource[(int)audioIndex].audioSource.Play ();
 		}
 		/// <summary>
 		/// ループSEの作成（いる？って聞かれたら自身がない）
 		/// </summary>
 		/// <param name="index"></param>
-		public void PlayLoopSE(AudioIndex audioIndex = 0)
+		public void PlayLoopSE (AudioIndex audioIndex = 0)
 		{
-			m_AudioSourcea[(int)audioIndex].audioSource.Play ();
+			m_AudioSource[(int)audioIndex].audioSource.Play ();
 		}
 		/// <summary>
 		/// BGMの再生
 		/// </summary>
 		public void PlayBGM ()
 		{
-			m_AudioSourcea[(int)AudioIndex.BGM].audioSource.Play ();
+			m_AudioSource[(int)AudioIndex.BGM].audioSource.Play ();
 		}
 		#endregion Play
-
-		public void SetAudio(AudioIndex audioIndex, AudioClip audioClip)
-		{
-			m_AudioSourcea[(int)audioIndex].audioSource.clip = audioClip;
-			m_AudioSourcea[(int)audioIndex].isLoadEnd = true;
-		}
-
-		#region Load
-		public void Load (string name)
+		public void PlayCheck ()
 		{
 
 		}
-		public void Load ()
+
+		public void AddCacheAudio (AudioClip audioClip)
 		{
-
-		}
-		#endregion Load
-
-		public void Clear(AudioIndex audioIndex)
-		{
-			m_AudioSourcea[(int)audioIndex].audioSource.clip = null;
-			m_AudioSourcea[(int)audioIndex].isLoadEnd = false;
-		}
-
-
-		private void Update ()
-		{
-			if (Input.GetKeyDown (KeyCode.X))
+			if (!m_CacheAudio.Contains (audioClip))
 			{
-				Clear (AudioIndex.SE_1);
-				StartCoroutine (Play ());
-				
+				m_CacheAudio.Add (audioClip);
 			}
 		}
-		private IEnumerator Play()
+		public AudioClip GetCacheAudio (string name)
 		{
-			ResourceManager.instance.SoundLoadAsync ("SE1", AudioIndex.SE_1);
-			while (m_AudioSourcea[(int)AudioIndex.SE_1].isLoadEnd == false)
+			for (int i = 0; i < m_CacheAudio.Count; ++i)
 			{
-				yield return null;
+				if (m_CacheAudio[i].name == name)
+				{
+					return m_CacheAudio[i];
+				}
 			}
-			PlaySE (AudioIndex.SE_1);
-			yield break;
+			Debug.LogWarning ("キャッシュにオーディオがありません");
+			return null;
+		}
+		public void CacheClear ()
+		{
+			m_CacheAudio.Clear ();
+		}
+		public void SetAudio (AudioIndex audioIndex, AudioClip audioClip)
+		{
+			m_AudioSource[(int)audioIndex].audioSource.clip = audioClip;
+			m_AudioSource[(int)audioIndex].isLoadEnd = true;
+		}
+		public void SetAudio (AudioIndex audioIndex, string name)
+		{
+			AudioClip audioClip = GetCacheAudio (name);
+			m_AudioSource[(int)audioIndex].audioSource.clip = audioClip;
+			m_AudioSource[(int)audioIndex].isLoadEnd = true;
+			
+		}
+
+		public void Clear (AudioIndex audioIndex)
+		{
+			m_AudioSource[(int)audioIndex].audioSource.clip = null;
+			m_AudioSource[(int)audioIndex].isLoadEnd = false;
 		}
 	}
 }

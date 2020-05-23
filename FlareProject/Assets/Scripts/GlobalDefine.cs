@@ -9,10 +9,10 @@ namespace Define
 	/// <summary>
 	/// 各シーケンスごとの読み込みを行うための定義
 	/// </summary>
-	public enum ResourcesLoadType
+	public enum SequenceType
 	{
 		None,
-		Manu,
+		Menu,
 		Battle,
 	}
 	public enum LoadType
