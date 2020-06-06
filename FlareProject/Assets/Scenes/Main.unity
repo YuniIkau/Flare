@@ -306,6 +306,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &279792550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 279792552}
+  - component: {fileID: 279792551}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &279792551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279792550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6282a386e22aa494686ad06578bed019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &279792552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279792550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &298511646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,6 +1255,7 @@ GameObject:
   - component: {fileID: 1277499804}
   - component: {fileID: 1277499803}
   - component: {fileID: 1277499805}
+  - component: {fileID: 1277499806}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1258,10 +1302,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AudioSource:
-  - {fileID: 1160249331}
-  - {fileID: 2069253249}
-  - {fileID: 298511648}
-  - {fileID: 577451038}
+  - audioSource: {fileID: 1160249331}
+    isLoadEnd: 0
+  - audioSource: {fileID: 2069253249}
+    isLoadEnd: 0
+  - audioSource: {fileID: 298511648}
+    isLoadEnd: 0
+  - audioSource: {fileID: 577451038}
+    isLoadEnd: 0
+--- !u!114 &1277499806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277499802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9643662b3267e3f45b113d15a35a5f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1384611733
 GameObject:
   m_ObjectHideFlags: 0
