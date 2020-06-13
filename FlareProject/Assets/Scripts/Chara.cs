@@ -5,7 +5,7 @@
 
 public class Chara : MonoUtil
 {
-	private CharaDate charaDate = new CharaDate ();
+	private CharaData charaData = new CharaData ();
 	void Start()
 	{
 

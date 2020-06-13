@@ -5,7 +5,7 @@
 //jsonから読み込んでくる
 //各キャラがこのクラスを保持する
 
-public class CharaDate
+public class CharaData
 {
 	//攻撃力、防御力、素早さ、体力、運
 	int ID;

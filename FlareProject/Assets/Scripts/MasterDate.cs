@@ -4,7 +4,7 @@ using System.Collections.Generic;
 //作成者：佐伯
 //内容：マスターの定義、Utilクラス
 
-public class MasterDate
+public class MasterData
 {
 	#region マスターデータのセットアップ
 	/// <summary>
@@ -13,7 +13,7 @@ public class MasterDate
 	/// false:どこかで失敗（失敗した箇所のログだし必須）
 	/// </summary>
 	/// <returns></returns>
-	public static bool MasterDateSetup()
+	public static bool MasterDataSetup()
 	{
 		if(!CharaMasterSetup())
 		{
