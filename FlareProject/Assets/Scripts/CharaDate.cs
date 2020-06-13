@@ -9,7 +9,7 @@ public class CharaDate
 {
 	//攻撃力、防御力、素早さ、体力、運
 	int ID;
-	int Lv;
+	int LV;
 	int EXP;
 	int HP;
 	int ATK;
@@ -22,7 +22,7 @@ public class CharaDate
 	/// </summary>
 	public void Initialize()
 	{
-		Lv = 1;
+		LV = 1;
 		EXP = 0;
 		//以下はマスタから値を設定
 
